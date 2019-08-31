@@ -3,8 +3,7 @@
     "version": "0.0.1",
     "description": "Plugin to create block-level uml diagrams based on textual uml such as plantuml, mermaid, etc. for markdown-it markdown parser.",
     "main": "src/index.js",
-    "scripts": {
-    },
+    "scripts": {},
     "repository": "git@github.com:manastalukdar/markdown-it-textual-uml.git",
     "author": {
         "name": "Manas Talukdar",
@@ -21,18 +20,17 @@
     ],
     "license": "MIT",
     "devDependencies": {
-        "eslint": "^5.16.0",
-        "babel-core": "^6.26.0",
-        "babel-loader": "^7.1.2",
-        "babel-preset-env": "^1.6.1",
-        "markdown-it": "^8.4.0",
+        "eslint": "^6.3.0",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^8.0.6",
+        "babel-preset-env": "^1.7.0",
+        "markdown-it": "^9.1.0",
         "markdown-it-testgen": "^0.1.5",
-        "standard": "^10.0.3",
-        "webpack": "^3.10.0",
-        "webpack-node-externals": "^1.6.0",
-        "yarn-upgrade-all": "^0.2.0"
+        "standard": "^14.1.0",
+        "webpack": "^4.39.3",
+        "webpack-node-externals": "^1.6.0"
     },
     "dependencies": {
-      "mermaid": "^7.1.2"
+        "mermaid": "^8.2.5"
     }
-  }
+}
