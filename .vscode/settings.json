@@ -1,0 +1,19 @@
+{
+    "eslint.validate": [{
+            "language": "html",
+            "autoFix": true
+        },
+        {
+            "language": "javascript",
+            "autoFix": true
+        }
+    ],
+    "eslint.autoFixOnSave": true,
+    "editor.formatOnSave": false,
+    "eslint.workingDirectories": [{
+        "directory": "./src",
+        "changeProcessCWD": true
+    }],
+    "markdown.extension.print.onFileSave": false,
+    "markdown.extension.toc.orderedList": true
+}
