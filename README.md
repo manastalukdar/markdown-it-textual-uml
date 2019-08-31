@@ -1,2 +1,5 @@
 # markdown-it-textual-uml
-Markdown-it plugin for parsing various textual uml solutions.
+
+Plugin to create block-level uml diagrams based on textual uml such as plantuml, mermaid, etc. for markdown-it markdown parser.
+
+[work-in-progress]
