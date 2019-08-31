@@ -4,7 +4,7 @@
     "description": "Markdown-it markdown parser plugin to create block-level uml diagrams based on textual uml such as plantuml, mermaid, etc.",
     "main": "src/index.js",
     "scripts": {
-      "test": "node -r babel-register test/index.js"
+        "test": "node -r babel-register test/index.js"
     },
     "repository": "git@github.com:manastalukdar/markdown-it-textual-uml.git",
     "author": {
@@ -21,18 +21,26 @@
         "mermaid"
     ],
     "license": "MIT",
+    "dependencies": {
+        "mermaid": "^8.2.5"
+    },
     "devDependencies": {
         "eslint": "^6.3.0",
+        "eslint-config-google": "^0.13.0",
+        "eslint-config-prettier": "^6.1.0",
+        "eslint-config-standard": "^14.1.0",
+        "eslint-friendly-formatter": "^4.0.1",
+        "eslint-plugin-node": "^9.2.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-standard": "^4.0.1",
         "babel-core": "^6.26.3",
         "babel-loader": "^8.0.6",
         "babel-preset-env": "^1.7.0",
         "markdown-it": "^9.1.0",
         "markdown-it-testgen": "^0.1.5",
+        "prettier": "^1.18.2",
         "standard": "^14.1.0",
         "webpack": "^4.39.3",
         "webpack-node-externals": "^1.6.0"
-    },
-    "dependencies": {
-        "mermaid": "^8.2.5"
     }
 }
