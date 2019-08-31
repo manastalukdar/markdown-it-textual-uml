@@ -2,7 +2,12 @@
 //
 'use strict'
 
-function plantumlParser(md, options) {
+function plantumlParser(options) {
+
+  function getMarkup(code) {
+    srcVal = generateSource(code, options)
+    return `<img src=$(srcVal) alt="uml diagram">`
+  }
 
   function generateSourceDefault(umlCode, pluginOptions) {
     const imageFormat = pluginOptions.imageFormat || 'svg'
@@ -25,8 +30,7 @@ function plantumlParser(md, options) {
 
   options = options || {}
 
-  const umlTypes = ['plantuml', 'dot'];
-
+  /*
   const umlType = options.umlType || 'plantuml'
   // const openMarker = options.openMarker || '@startuml'
   const openMarker = options.openMarker || '```' + umlType
@@ -35,8 +39,10 @@ function plantumlParser(md, options) {
   const closeMarker = options.closeMarker || '```'
   const closeChar = closeMarker.charCodeAt(0)
   const render = options.render || md.renderer.rules.image
+  */
   const generateSource = options.generateSource || generateSourceDefault
 
+  /*
   function uml(state, startLine, endLine, silent) {
     let nextLine
     let i
@@ -151,6 +157,8 @@ function plantumlParser(md, options) {
     alt: ['paragraph', 'reference', 'blockquote', 'list']
   })
   md.renderer.rules.uml_diagram = render
+
+  */
 }
 
 export default {

@@ -14,7 +14,7 @@ const mermaidChart = (code) => {
   }
 }
 
-const MermaidParser = (md, opts) => {
+const MermaidParser = (opts) => {
   Mermaid.initialize(Object.assign(MermaidPlugIn.default, opts));
   /* md.mermaid = mermaid
   mermaid.loadPreferences = (preferenceStore) => {
@@ -39,26 +39,6 @@ const MermaidParser = (md, opts) => {
       'gantt-axis-format': ganttAxisFormat
     }
   } */
-
-  const defaultRenderer = md.renderer.rules.fence.bind(md.renderer.rules);
-  md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
-    const token = tokens[idx]
-    // const code = token.content.trim()
-    const code = `${token.info} \n ${token.content.trim()}`
-    if (token.info === 'mermaid' || token.info === 'gantt' || token.info === 'sequenceDiagram' || token.info.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) {
-      return MermaidChart(code)
-    }
-    /*
-    if (token.info === 'mermaid') {
-      return mermaidChart(code)
-    }
-    const firstLine = code.split(/\n/)[0].trim()
-    if (firstLine === 'gantt' || firstLine === 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) {
-      return mermaidChart(code)
-    }
-    */
-    return defaultRenderer(tokens, idx, options, env, slf)
-  }
 
   MermaidParser.default={
     startOnLoad: false,
