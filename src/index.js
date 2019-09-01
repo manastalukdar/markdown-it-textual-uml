@@ -28,6 +28,8 @@ function umlPlugin(md, options) {
         break;
       case 'ditaa':
         const newCode = '@startditaa\n' + code + '\n@endditaa'
+        return plantumlParser.getMarkup(newCode)
+        break;
     }
 
     return defaultRenderer(tokens, idx, options, env, slf)
