@@ -1,8 +1,8 @@
 Outputs svg format with custom server
 .
-@startuml
+```plantuml
 Bob -> Alice : hello
-@enduml
+```
 .
-<img src="http://example.com/plantuml/svg/SoWkIImgAStDuNBAJrBGjLDmpCbCJbMmKiX8pSd9vt98pKi1IW80" alt="uml diagram">
+<img src="http://example.com/umlPlugin/svg/SoWkIImgAStDuNBAJrBGjLDmpCbCJbMmKiX8pSd9vt98pKi1IW80" alt="uml diagram">
 .

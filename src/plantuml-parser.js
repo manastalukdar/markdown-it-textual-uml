@@ -7,12 +7,14 @@ const functions = {
   options: {},
 
   initialize(options) {
-    this.options = options;
+    if (options) {
+      this.options = options;
+    }
   },
 
   getMarkup(code, diagramName) {
     const srcVal = this.generateSource(code, diagramName, this.options);
-    return "<img src=\"" + srcVal + "\" alt=\"uml diagram\">";
+    return "<img src=\"" + srcVal + "\" alt=\"uml diagram\">\n";
   },
 
   generateSource(umlCode, diagramMarker, pluginOptions) {
@@ -30,6 +32,6 @@ const functions = {
   }
 }
 
-module.exports = {
+export default {
   functions
 };

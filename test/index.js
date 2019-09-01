@@ -1,7 +1,6 @@
 'use strict';
 
 //import assert from 'assert';
-//import markdownIt from 'markdown-it';
 //import markdownItMermaid from '../src';
 
 var path = require('path');
@@ -11,51 +10,57 @@ import umlPlugin from '../src/index.js'
 
 /*eslint-env mocha*/
 
-describe('markdown-it-textual-uml', function () {
-  var defaultParser = md().use(umlPlugin);
+describe('markdown-it-textual-uml: default', function () {
+  it('test default', function(done) {
+    var defaultParser = md().use(umlPlugin);
 
-  generate(
-    path.join(__dirname, 'fixtures/test.txt'),
-    { header: true },
-    defaultParser
-  );
+    generate(
+      path.join(__dirname, 'fixtures/default.txt'),
+      { header: true },
+      defaultParser
+    );
+    done();
+  });
+});
 
-  /*generate(
-    path.join(__dirname, 'fixtures/default.txt'),
-    { header: true },
-    defaultParser
-  );
+describe('markdown-it-textual-uml: ditaa', function () {
+  it('test ditaa', function(done) {
+    var umlPlugin = require('../src/index.js')()
+    var ditaaParser = md().use(umlPlugin);
 
-  var ditaaParser = md().use(
-    umlPlugin,
-    {
-      openMarker: '@startditaa',
-      closeMarker: '@endditaa',
-      diagramName: 'ditaa'
-    }
-  );
+    generate(
+      path.join(__dirname, 'fixtures/ditaa.txt'),
+      { header: true },
+      ditaaParser
+    );
+    done();
+  });
+});
 
-  generate(
-    path.join(__dirname, 'fixtures/ditaa.txt'),
-    { header: true },
-    ditaaParser
-  );
+describe('markdown-it-textual-uml: png', function () {
+  it('test png', function(done) {
+    var pngParser = md().use(umlPlugin, { imageFormat: 'png' });
 
-  var pngParser = md().use(umlPlugin, { imageFormat: 'png' });
+    generate(
+      path.join(__dirname, 'fixtures/png.txt'),
+      { header: true },
+      pngParser
+    );
+    done();
+  });
+});
 
-  generate(
-    path.join(__dirname, 'fixtures/png.txt'),
-    { header: true },
-    pngParser
-  );
+describe('markdown-it-textual-uml: server', function () {
+  it('test server', function(done) {
+    var parserWithCustomServer = md().use(umlPlugin, { server: 'http://example.com/umlPlugin' });
 
-  var parserWithCustomServer = md().use(umlPlugin, { server: 'http://example.com/umlPlugin' });
-
-  generate(
-    path.join(__dirname, 'fixtures/server.txt'),
-    { header: true },
-    parserWithCustomServer
-  );*/
+    generate(
+      path.join(__dirname, 'fixtures/server.txt'),
+      { header: true },
+      parserWithCustomServer
+    );
+    done();
+  });
 });
 
 
