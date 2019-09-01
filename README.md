@@ -33,9 +33,7 @@ At this point the following textual uml offerings are supported:
 
 ````markdown
 ```plantuml
-@startuml
 Bob -> Alice : hello
-@enduml
 ```
 ````
 

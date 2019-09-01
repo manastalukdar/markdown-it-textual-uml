@@ -1,0 +1,10 @@
+Simple diagram
+.
+```plantuml
+@startuml
+Bob -> Alice : hello
+@enduml
+```
+.
+<img src="https://www.plantuml.com/plantuml/svg/SoWkIImgAStDuNA0ivpoanHqxHGSSpAJKnMi539IStBokHnIyrB0oY0q0000" alt="uml diagram">
+.

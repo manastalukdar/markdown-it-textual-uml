@@ -15,6 +15,12 @@ describe('markdown-it-textual-uml', function () {
   var defaultParser = md().use(umlPlugin);
 
   generate(
+    path.join(__dirname, 'fixtures/test.txt'),
+    { header: true },
+    defaultParser
+  );
+
+  /*generate(
     path.join(__dirname, 'fixtures/default.txt'),
     { header: true },
     defaultParser
@@ -49,7 +55,7 @@ describe('markdown-it-textual-uml', function () {
     path.join(__dirname, 'fixtures/server.txt'),
     { header: true },
     parserWithCustomServer
-  );
+  );*/
 });
 
 

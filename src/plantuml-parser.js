@@ -2,35 +2,34 @@
 //
 'use strict'
 
-function plantumlParser(options) {
+const functions = {
 
-  function getMarkup(code) {
-    srcVal = generateSource(code, options)
-    return `<img src=$(srcVal) alt="uml diagram">`
-  }
+  options: {},
 
-  function generateSource(umlCode, pluginOptions) {
-    const imageFormat = pluginOptions.imageFormat || 'svg'
-    const diagramName = pluginOptions.diagramName || 'uml'
-    const server = pluginOptions.server || 'https://www.plantuml.com/plantuml'
-    const deflate = require('./lib/deflate.js')
+  initialize(options) {
+    this.options = options;
+  },
+
+  getMarkup(code, diagramName) {
+    const srcVal = this.generateSource(code, diagramName, this.options);
+    return "<img src=\"" + srcVal + "\" alt=\"uml diagram\">";
+  },
+
+  generateSource(umlCode, diagramMarker, pluginOptions) {
+    const imageFormat = pluginOptions.imageFormat || 'svg';
+    const server = pluginOptions.server || 'https://www.plantuml.com/plantuml';
+    const deflate = require('./lib/deflate.js');
     const zippedCode = deflate.encode64(
       deflate.zip_deflate(
-        unescape(
-          encodeURIComponent(
-            '@start' + diagramName + '\n' + umlCode + '\n@end' + diagramName
-          )
+        unescape(encodeURIComponent(
+          '@start' + diagramMarker + '\n' + umlCode + '\n@end' + diagramMarker)),
         ),
         9
-      )
-    )
-
-    return server + '/' + imageFormat + '/' + zippedCode
+      );
+    return server + '/' + imageFormat + '/' + zippedCode;
   }
-
-  options = options || {}
 }
 
-export default {
-  plantumlParser
-}
+module.exports = {
+  functions
+};

@@ -1,6 +1,6 @@
 'use strict'
 
-import mermaid from 'mermaid'
+const mermaid = require('mermaid')
 
 const mermaidParser = (options) => {
   mermaid.initialize(Object.assign(MermaidParser.default, options));
