@@ -10,39 +10,25 @@ import umlPlugin from '../src/index.js'
 
 /*eslint-env mocha*/
 
-describe('markdown-it-textual-uml: default', function () {
+describe('markdown-it-textual-uml: plantuml - default', function () {
   it('test default', function(done) {
     var defaultParser = md().use(umlPlugin);
 
     generate(
-      path.join(__dirname, 'fixtures/default.txt'),
+      path.join(__dirname, 'fixtures/plantuml/default.txt'),
       { header: true },
       defaultParser
-    );
+    )
     done();
   });
 });
 
-describe('markdown-it-textual-uml: ditaa', function () {
-  it('test ditaa', function(done) {
-    var umlPlugin = require('../src/index.js')()
-    var ditaaParser = md().use(umlPlugin);
-
-    generate(
-      path.join(__dirname, 'fixtures/ditaa.txt'),
-      { header: true },
-      ditaaParser
-    );
-    done();
-  });
-});
-
-describe('markdown-it-textual-uml: png', function () {
+describe('markdown-it-textual-uml: plantuml - png', function () {
   it('test png', function(done) {
     var pngParser = md().use(umlPlugin, { imageFormat: 'png' });
 
     generate(
-      path.join(__dirname, 'fixtures/png.txt'),
+      path.join(__dirname, 'fixtures/plantuml/png.txt'),
       { header: true },
       pngParser
     );
@@ -50,12 +36,12 @@ describe('markdown-it-textual-uml: png', function () {
   });
 });
 
-describe('markdown-it-textual-uml: server', function () {
+describe('markdown-it-textual-uml: plantuml - server', function () {
   it('test server', function(done) {
     var parserWithCustomServer = md().use(umlPlugin, { server: 'http://example.com/umlPlugin' });
 
     generate(
-      path.join(__dirname, 'fixtures/server.txt'),
+      path.join(__dirname, 'fixtures/plantuml/server.txt'),
       { header: true },
       parserWithCustomServer
     );

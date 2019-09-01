@@ -4,7 +4,9 @@ const plantumlParser = require('./plantuml-parser.js').default
 //import mermaidParser from './mermaid-parser.js'
 
 module.exports = function umlPlugin(md, options) {
-  plantumlParser.functions.initialize(options)
+  options = options || {};
+
+  plantumlParser.functions.initialize(options);
   //mermaidParser(options)
 
   const defaultRenderer = md.renderer.rules.fence.bind(md.renderer.rules);
