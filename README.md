@@ -14,11 +14,9 @@
 
 ## Overview
 
-Please note that this project is currently a **work-in-progress**. No npm package has been published yet.
+[**Note:** This project is currently a **_work-in-progress_**. No npm package has been published yet. The source code is probably broken.]
 
-Markdown-it markdown parser plugin to create uml diagrams based on textual uml offerings such as plantuml, mermaid, etc.
-
-With this plugin you can create uml diagrams inside your markdown files using various textual uml offering such as plantuml, mermaid, etc.
+This is a `markdown-it` markdown parser plugin to create uml diagrams from text, based on plantuml, mermaid, etc.
 
 At this point the following textual uml offerings are supported:
 
