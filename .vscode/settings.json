@@ -6,7 +6,11 @@
         {
             "language": "javascript",
             "autoFix": true
-        }
+        },
+        {
+          "language": "markdown",
+          "autoFix": true
+      }
     ],
     "eslint.autoFixOnSave": true,
     "editor.formatOnSave": false,

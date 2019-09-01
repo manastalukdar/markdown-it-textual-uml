@@ -5,7 +5,8 @@
    2. [UML examples](#uml-examples)
       1. [PlantUML](#plantuml)
       2. [DOT](#dot)
-      3. [mermaid](#mermaid)
+      3. [ditaa](#ditaa)
+      4. [mermaid](#mermaid)
    3. [Installation](#installation)
    4. [Usage](#usage)
    5. [References](#references)
@@ -25,6 +26,7 @@ At this point the following textual uml offerings are supported:
 | ----------------------------------------------------------- | ------------------------- |
 | [PlantUML](http://plantuml.com/)                            | `plantuml`                |
 | [DOT](https://graphviz.gitlab.io/_pages/doc/info/lang.html) | `dot`                     |
+| [ditaa](http://ditaa.sourceforge.net/)                      | `ditaa`                   |
 | [mermaid](https://github.com/knsv/mermaid)                  | `mermaid`                 |
 
 ## UML examples
@@ -47,6 +49,26 @@ digraph example1 {
     1 -> 2 -> { 4, 5 };
     1 -> 3 -> { 6, 7 };
 }
+```
+````
+
+### ditaa
+
+**Note:** Please be aware that you need to provide the start and end markers, `@startditaa` and `@endditaa`
+
+````markdown
+```ditaa
+@startditaa
++--------+   +-------+    +-------+
+|        +---+ ditaa +--> |       |
+|  Text  |   +-------+    |diagram|
+|Document|   |!magic!|    |       |
+|     {d}|   |       |    |       |
++---+----+   +-------+    +-------+
+	:                         ^
+	|       Lots of work      |
+	+-------------------------+
+@endditaa
 ```
 ````
 

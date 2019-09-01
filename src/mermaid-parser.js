@@ -1,7 +1,9 @@
+'use strict'
+
 import mermaid from 'mermaid'
 
-const MermaidParser = (options) => {
-  Mermaid.initialize(Object.assign(MermaidPlugIn.default, options));
+const mermaidParser = (options) => {
+  mermaid.initialize(Object.assign(MermaidParser.default, options));
 
   MermaidParser.default={
     startOnLoad: false,
@@ -25,4 +27,4 @@ const MermaidParser = (options) => {
   }
 }
 
-export default MermaidParser
+export default mermaidParser

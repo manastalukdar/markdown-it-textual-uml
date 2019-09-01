@@ -1,13 +1,11 @@
-// Process block-level uml diagrams
-//
 'use strict'
 
-import plantumlParser from 'plantuml-parser'
-import mermaidParser from 'mermaid-parser'
+import plantumlParser from './plantuml-parser.js'
+// import mermaidParser from './mermaid-parser.js'
 
 function umlPlugin(md, options) {
   plantumlParser(options)
-  mermaidParser(options)
+  //mermaidParser(options)
 
   const defaultRenderer = md.renderer.rules.fence.bind(md.renderer.rules);
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
@@ -22,7 +20,7 @@ function umlPlugin(md, options) {
 
     switch(langName) {
       case 'mermaid':
-        return mermaidParser.MermaidChart(code)
+        //return mermaidParser.mermaidChart(code)
         break;
       case 'plantuml':
       case 'dot':

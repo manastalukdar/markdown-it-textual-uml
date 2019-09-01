@@ -1,15 +1,19 @@
 {
     "name": "markdown-it-textual-uml",
     "version": "0.0.1",
+    "type": "module",
     "description": "Markdown-it markdown parser plugin to create uml diagrams based on textual uml offerings such as plantuml, mermaid, etc.",
     "main": "src/index.js",
     "scripts": {
-        "test": "node -r babel-register test/index.js",
-        "publish": "npm publish --access=public"
+        "test": "mocha --require reify test/**/*.js",
+        "publish": "npm publish --access=public",
+        "start": "nodemon --exec babel-node src/index.js",
+        "build": "babel src --out-dir dist --source-maps",
+        "serve": "node dist/index.js"
     },
     "repository": {
-      "type": "git",
-      "url": "https://github.com/manastalukdar/markdown-it-textual-uml.git"
+        "type": "git",
+        "url": "https://github.com/manastalukdar/markdown-it-textual-uml.git"
     },
     "author": {
         "name": "Manas Talukdar",
@@ -29,6 +33,14 @@
         "mermaid": "^8.2.5"
     },
     "devDependencies": {
+        "@babel/cli": "^7.5.5",
+        "@babel/core": "^7.5.5",
+        "@babel/node": "^7.5.5",
+        "@babel/preset-env": "^7.5.5",
+        "@babel/register": "7.5.5",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^8.0.6",
+        "babel-preset-env": "^1.7.0",
         "eslint": "^6.3.0",
         "eslint-config-google": "^0.13.0",
         "eslint-config-prettier": "^6.1.0",
@@ -37,12 +49,12 @@
         "eslint-plugin-node": "^9.2.0",
         "eslint-plugin-prettier": "^3.1.0",
         "eslint-plugin-standard": "^4.0.1",
-        "babel-core": "^6.26.3",
-        "babel-loader": "^8.0.6",
-        "babel-preset-env": "^1.7.0",
         "markdown-it": "^9.1.0",
         "markdown-it-testgen": "^0.1.5",
+        "mocha": "^6.2.0",
+        "nodemon": "^1.19.1",
         "prettier": "^1.18.2",
+        "reify": "^0.20.12",
         "standard": "^14.1.0",
         "webpack": "^4.39.3",
         "webpack-node-externals": "^1.6.0"

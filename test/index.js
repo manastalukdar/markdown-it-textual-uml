@@ -1,8 +1,59 @@
-import assert from 'assert';
-import markdownIt from 'markdown-it';
-import markdownItMermaid from '../src';
+'use strict';
 
-const mdi = markdownIt()
+//import assert from 'assert';
+//import markdownIt from 'markdown-it';
+//import markdownItMermaid from '../src';
+
+var path = require('path');
+var generate = require('markdown-it-testgen');
+import md from 'markdown-it'
+import umlPlugin from '../src/index.js'
+
+/*eslint-env mocha*/
+
+describe('markdown-it-textual-uml', function () {
+  var defaultParser = md().use(umlPlugin);
+
+  generate(
+    path.join(__dirname, 'fixtures/default.txt'),
+    { header: true },
+    defaultParser
+  );
+
+  var ditaaParser = md().use(
+    umlPlugin,
+    {
+      openMarker: '@startditaa',
+      closeMarker: '@endditaa',
+      diagramName: 'ditaa'
+    }
+  );
+
+  generate(
+    path.join(__dirname, 'fixtures/ditaa.txt'),
+    { header: true },
+    ditaaParser
+  );
+
+  var pngParser = md().use(umlPlugin, { imageFormat: 'png' });
+
+  generate(
+    path.join(__dirname, 'fixtures/png.txt'),
+    { header: true },
+    pngParser
+  );
+
+  var parserWithCustomServer = md().use(umlPlugin, { server: 'http://example.com/umlPlugin' });
+
+  generate(
+    path.join(__dirname, 'fixtures/server.txt'),
+    { header: true },
+    parserWithCustomServer
+  );
+});
+
+
+/* const mdi = markdownIt()
 mdi.use(markdownItMermaid);
 
 assert(mdi.render('# Hello world').trim() === '<h1>Hello world</h1>', '# Hello world')
@@ -16,6 +67,7 @@ graph TD
     C -->|Two| E[iPhone]
     C -->|Three| F[Car]
 \`\`\``))
+*/
 // console.log(mdi.render(`\`\`\`
 // graph TD
 //     A[Christmas] -->|Get money| B(Go shopping)
