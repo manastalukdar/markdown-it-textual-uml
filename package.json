@@ -4,9 +4,13 @@
     "description": "Markdown-it markdown parser plugin to create block-level uml diagrams based on textual uml such as plantuml, mermaid, etc.",
     "main": "src/index.js",
     "scripts": {
-        "test": "node -r babel-register test/index.js"
+        "test": "node -r babel-register test/index.js",
+        "publish": "npm publish --access=public"
     },
-    "repository": "git@github.com:manastalukdar/markdown-it-textual-uml.git",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/manastalukdar/markdown-it-textual-uml.git"
+    },
     "author": {
         "name": "Manas Talukdar",
         "email": "<manas.talukdar@gmail.com>",
