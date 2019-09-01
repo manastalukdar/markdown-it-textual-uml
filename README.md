@@ -13,7 +13,7 @@
 
 ## Overview
 
-Please note that this project is currently a **work-in-progress**.
+Please note that this project is currently a **work-in-progress**. No npm package has been published yet.
 
 Markdown-it markdown parser plugin to create block-level uml diagrams based on textual uml such as plantuml, mermaid, etc.
 
