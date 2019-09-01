@@ -4,7 +4,8 @@
    1. [Overview](#overview)
    2. [UML examples](#uml-examples)
       1. [PlantUML](#plantuml)
-      2. [mermaid](#mermaid)
+      2. [DOT](#dot)
+      3. [mermaid](#mermaid)
    3. [Installation](#installation)
    4. [Usage](#usage)
    5. [References](#references)
@@ -20,8 +21,11 @@ With this plugin you can create uml diagrams inside your markdown files using va
 
 At this point the following textual uml solutions are supported:
 
-1. [PlantUML](http://plantuml.com/)
-2. [mermaid](https://github.com/knsv/mermaid)
+| UML Solution                                                | Markdown fence identifier |
+| ----------------------------------------------------------- | ------------------------- |
+| [PlantUML](http://plantuml.com/)                            | `plantuml`                |
+| [DOT](https://graphviz.gitlab.io/_pages/doc/info/lang.html) | `dot`                     |
+| [mermaid](https://github.com/knsv/mermaid)                  | `mermaid`                 |
 
 ## UML examples
 
@@ -34,6 +38,8 @@ Bob -> Alice : hello
 @enduml
 ```
 ````
+
+### DOT
 
 ````markdown
 ```dot
