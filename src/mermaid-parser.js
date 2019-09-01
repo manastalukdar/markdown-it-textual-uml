@@ -1,17 +1,7 @@
 import mermaid from 'mermaid'
 
-const mermaidChart = (code) => {
-  try {
-    var needsUniqueId = "render" + (Math.floor(Math.random() * 10000)).toString();
-    Mermaid.mermaidAPI.render(needsUniqueId, code, sc => {code=sc})
-    return `<div class="mermaid">${code}</div>`
-  } catch ({ str, hash }) {
-    return `<pre>${str}</pre>`
-  }
-}
-
-const MermaidParser = (opts) => {
-  Mermaid.initialize(Object.assign(MermaidPlugIn.default, opts));
+const MermaidParser = (options) => {
+  Mermaid.initialize(Object.assign(MermaidPlugIn.default, options));
 
   MermaidParser.default={
     startOnLoad: false,
@@ -19,6 +9,18 @@ const MermaidParser = (opts) => {
     flowchart:{
       htmlLabels: false,
       useMaxWidth: true,
+    }
+  }
+
+  options = options || {}
+
+  const mermaidChart = (code) => {
+    try {
+      var needsUniqueId = "render" + (Math.floor(Math.random() * 10000)).toString();
+      Mermaid.mermaidAPI.render(needsUniqueId, code, sc => {code=sc})
+      return `<div class="mermaid">${code}</div>`
+    } catch ({ str, hash }) {
+      return `<pre>${str}</pre>`
     }
   }
 }
