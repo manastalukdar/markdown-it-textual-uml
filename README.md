@@ -52,11 +52,8 @@ digraph example1 {
 
 ### ditaa
 
-**Note:** Please be aware that you need to provide the start and end markers, `@startditaa` and `@endditaa`
-
 ````markdown
 ```ditaa
-@startditaa
 +--------+   +-------+    +-------+
 |        +---+ ditaa +--> |       |
 |  Text  |   +-------+    |diagram|
@@ -66,7 +63,6 @@ digraph example1 {
 	:                         ^
 	|       Lots of work      |
 	+-------------------------+
-@endditaa
 ```
 ````
 

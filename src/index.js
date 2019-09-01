@@ -1,11 +1,11 @@
 'use strict'
 
 import plantumlParser from './plantuml-parser.js'
-// import mermaidParser from './mermaid-parser.js'
+import mermaidParser from './mermaid-parser.js'
 
 function umlPlugin(md, options) {
   plantumlParser(options)
-  //mermaidParser(options)
+  mermaidParser(options)
 
   const defaultRenderer = md.renderer.rules.fence.bind(md.renderer.rules);
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
@@ -20,12 +20,14 @@ function umlPlugin(md, options) {
 
     switch(langName) {
       case 'mermaid':
-        //return mermaidParser.mermaidChart(code)
+        return mermaidParser.mermaidChart(code)
         break;
       case 'plantuml':
       case 'dot':
         return plantumlParser.getMarkup(code)
         break;
+      case 'ditaa':
+        const newCode = '@startditaa\n' + code + '\n@endditaa'
     }
 
     return defaultRenderer(tokens, idx, options, env, slf)
