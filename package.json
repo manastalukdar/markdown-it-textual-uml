@@ -1,7 +1,7 @@
 {
     "name": "markdown-it-textual-uml",
     "version": "0.0.1",
-    "description": "Markdown-it markdown parser plugin to create block-level uml diagrams based on textual uml such as plantuml, mermaid, etc.",
+    "description": "Markdown-it markdown parser plugin to create uml diagrams based on textual uml offerings such as plantuml, mermaid, etc.",
     "main": "src/index.js",
     "scripts": {
         "test": "node -r babel-register test/index.js",

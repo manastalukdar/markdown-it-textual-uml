@@ -15,13 +15,13 @@
 
 Please note that this project is currently a **work-in-progress**. No npm package has been published yet.
 
-Markdown-it markdown parser plugin to create block-level uml diagrams based on textual uml such as plantuml, mermaid, etc.
+Markdown-it markdown parser plugin to create uml diagrams based on textual uml offerings such as plantuml, mermaid, etc.
 
 With this plugin you can create uml diagrams inside your markdown files using various textual uml offering such as plantuml, mermaid, etc.
 
-At this point the following textual uml solutions are supported:
+At this point the following textual uml offerings are supported:
 
-| UML Solution                                                | Markdown fence identifier |
+| UML Offering                                                | Markdown fence identifier |
 | ----------------------------------------------------------- | ------------------------- |
 | [PlantUML](http://plantuml.com/)                            | `plantuml`                |
 | [DOT](https://graphviz.gitlab.io/_pages/doc/info/lang.html) | `dot`                     |
