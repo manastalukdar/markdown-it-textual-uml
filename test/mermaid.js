@@ -1,12 +1,13 @@
+'use strict'
+
 import assert from 'assert'
 import path from 'path'
 import generate from 'markdown-it-testgen'
 import md from 'markdown-it'
 import umlPlugin from '../src/index.js'
 
-describe('markdown-it-textual-uml: mermaid', function () {
-
-  it('test sanity', function () {
+describe('markdown-it-textual-uml: mermaid', function() {
+  /*it('test sanity', function () {
     md().use(umlPlugin);
     assert(md().render('# Hello world').trim() === '<h1>Hello world</h1>', '# Hello world')
     assert(md().render('Hello world').trim() === '<p>Hello world</p>', 'Hello world')
@@ -21,19 +22,12 @@ describe('markdown-it-textual-uml: mermaid', function () {
         C -->|Two| E[iPhone]
         C -->|Three| F[Car]
     \`\`\``));
-  });
+  });*/
 
-  it('test default', function () {
+  it('test default', function() {
     var defaultParser = md().use(umlPlugin)
 
-    generate(
-      path.join(__dirname, 'fixtures/mermaid/default.txt'), {
-        header: true
-      },
-      defaultParser
-    );
-
-    /*function runGenerate() {
+    function runGenerate() {
       return new Promise((resolve) => {
         generate(
           path.join(__dirname, 'fixtures/mermaid/default.txt'), {
@@ -44,9 +38,9 @@ describe('markdown-it-textual-uml: mermaid', function () {
         resolve();
       })
     }
-    runGenerate()*/
+    runGenerate();
   })
-});
+})
 
 // console.log(mdi.render(`\`\`\`
 // graph TD

@@ -1,6 +1,7 @@
 'use strict'
 
 const puppeteer = require('puppeteer')
+const path = require('path')
 
 // const mermaid = require('mermaid')
 
@@ -24,29 +25,37 @@ const functions = {
     // mermaid.initialize(Object.assign(this.mermaidParserDefaults, options))
   },
 
-  getMarkup(code) {
-    console.log(code)
-  },
-
-  async getMarkup1(code) {
-      const browser = await puppeteer.launch()
+  async getMarkup(code) {
+    const browser = await puppeteer.launch()
+    const mermaidConfig = Object.assign(this.mermaidParserDefaults, this.options)
+    try {
       const page = await browser.newPage()
-      await page.goto(`file://${path.join(__dirname, 'index.html')}`)
+      const file = path.join(__dirname, 'index.html')
+      await page.goto(`file://${file}`)
       const definition = code;
 
-      await page.$eval('#container', (container, definition) => {
+      const element = (await page.$$('#container'))[1];
+      const divsCounts = await page.$$eval('#container', divs => divs.length);
+
+      await page.$eval('#container', (container, definition, mermaidConfig) => {
         container.innerHTML = definition
-        window.mermaid.initialize(Object.assign(this.mermaidParserDefaults, this.options))
+        window.mermaid.initialize(mermaidConfig)
         window.mermaid.init(undefined, container)
-      }, definition)
+      }, definition, mermaidConfig)
 
       const svg = await page.$eval('#container', container => container.innerHTML)
 
-      const resultSvg = container.innerHTML;
+      const resultSvg = svg
 
       browser.close()
-
       return resultSvg;
+    } catch ({
+      str,
+      hash
+    }) {
+      browser.close()
+      return `<pre>${str}</pre>`
+    }
 
     /*try {
       var needsUniqueId = 'render' + (Math.floor(Math.random() * 10000)).toString()

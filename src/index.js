@@ -7,7 +7,7 @@ module.exports = function umlPlugin(md, options) {
   options = options || {};
 
   plantumlParser.functions.initialize(options);
-  mermaidParser.functions.initialize(options)
+  mermaidParser.functions.initialize(options);
 
   const defaultRenderer = md.renderer.rules.fence.bind(md.renderer.rules);
 
@@ -23,8 +23,11 @@ module.exports = function umlPlugin(md, options) {
 
     switch(langName) {
       case 'mermaid':
-        mermaidParser.functions.getMarkup(code).then(function(result) {
+        mermaidParser.functions.getMarkup(code)
+        .then(function(result) {
           return result
+        }).catch((err) => {
+          console.log(err)
         })
         break;
       case 'plantuml':
