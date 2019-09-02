@@ -4,5 +4,5 @@ Outputs svg format with custom server
 Bob -> Alice : hello
 ```
 .
-<img src="http://example.com/umlPlugin/svg/SoWkIImgAStDuNBAJrBGjLDmpCbCJbMmKiX8pSd9vt98pKi1IW80" alt="uml diagram">
+<img src="https://www.plantuml.com/plantuml/svg/SoWkIImgAStDuNBAJrBGjLDmpCbCJbMmKiX8pSd9vt98pKi1IW80" alt="uml diagram">
 .

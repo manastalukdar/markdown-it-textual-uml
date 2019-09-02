@@ -68,8 +68,11 @@ digraph example1 {
 
 ````markdown
 ```mermaid
-graph LR
-    id1>This is the text in the box]
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
 ```
 ````
 

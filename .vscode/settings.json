@@ -1,23 +1,25 @@
 {
-    "eslint.validate": [{
-            "language": "html",
-            "autoFix": true
-        },
-        {
-            "language": "javascript",
-            "autoFix": true
-        },
-        {
-          "language": "markdown",
-          "autoFix": true
-      }
-    ],
-    "eslint.autoFixOnSave": true,
-    "editor.formatOnSave": false,
-    "eslint.workingDirectories": [{
-        "directory": "./src",
-        "changeProcessCWD": true
-    }],
-    "markdown.extension.print.onFileSave": false,
-    "markdown.extension.toc.orderedList": true
+  "eslint.validate": [{
+      "language": "html",
+      "autoFix": true
+    },
+    {
+      "language": "javascript",
+      "autoFix": true
+    },
+    {
+      "language": "markdown",
+      "autoFix": true
+    }
+  ],
+  "eslint.autoFixOnSave": true,
+  "editor.formatOnSave": false,
+  "eslint.workingDirectories": [{
+    "directory": "./src",
+    "changeProcessCWD": true
+  }],
+  "markdown.extension.print.onFileSave": false,
+  "markdown.extension.toc.orderedList": true,
+  "javascript.validate.enable": true,
+  "standard.enable": false
 }

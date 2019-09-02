@@ -16,7 +16,7 @@
           "name": "Test",
           "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
           "args": [
-            "--require", "reify"
+            "--require", "reify", "test/tests.js"
           ],
           "internalConsoleOptions": "openOnSessionStart"
         }
