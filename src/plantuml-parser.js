@@ -32,6 +32,6 @@ const functions = {
   }
 }
 
-export default {
+module.exports = {
   functions
 };

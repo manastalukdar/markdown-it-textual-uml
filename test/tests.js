@@ -1,3 +1,3 @@
-require('./plantuml.js')
-require('./ditaa.js')
+//require('./plantuml.js')
+//require('./ditaa.js')
 require('./mermaid.js')

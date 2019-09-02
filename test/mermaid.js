@@ -1,32 +1,39 @@
 import assert from 'assert'
 import path from 'path'
 import generate from 'markdown-it-testgen'
-import mdi from 'markdown-it'
+import md from 'markdown-it'
 import umlPlugin from '../src/index.js'
 
 describe('markdown-it-textual-uml: mermaid', function () {
 
   it('test sanity', function () {
-    mdi().use(umlPlugin);
-    assert(mdi().render('# Hello world').trim() === '<h1>Hello world</h1>', '# Hello world')
-    assert(mdi().render('Hello world').trim() === '<p>Hello world</p>', 'Hello world')
+    md().use(umlPlugin);
+    assert(md().render('# Hello world').trim() === '<h1>Hello world</h1>', '# Hello world')
+    assert(md().render('Hello world').trim() === '<p>Hello world</p>', 'Hello world')
   });
 
   it('test logging', function () {
-    console.log(mdi().render(`\`\`\`mermaid
+    console.log(md().render(`\`\`\`mermaid
     graph TD
         A[Christmas] -->|Get money| B(Go shopping)
         B --> C{Let me think}
         C -->|One| D[Laptop]
         C -->|Two| E[iPhone]
         C -->|Three| F[Car]
-    \`\`\``))
-  })
+    \`\`\``));
+  });
 
   it('test default', function () {
-    var defaultParser = mdi().use(umlPlugin)
+    var defaultParser = md().use(umlPlugin)
 
-    function runGenerate() {
+    generate(
+      path.join(__dirname, 'fixtures/mermaid/default.txt'), {
+        header: true
+      },
+      defaultParser
+    );
+
+    /*function runGenerate() {
       return new Promise((resolve) => {
         generate(
           path.join(__dirname, 'fixtures/mermaid/default.txt'), {
@@ -37,7 +44,7 @@ describe('markdown-it-textual-uml: mermaid', function () {
         resolve();
       })
     }
-    runGenerate()
+    runGenerate()*/
   })
 });
 
