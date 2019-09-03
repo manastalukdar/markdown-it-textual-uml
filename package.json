@@ -6,7 +6,7 @@
     "main": "src/index.js",
     "scripts": {
         "test": "mocha --require reify test/tests.js",
-        "publish": "npm publish --access=public",
+        "publish": "npm publish",
         "build": "babel src --out-dir dist --source-maps",
         "pack": "npm pack",
         "getMermaid": "node src/utils/getMermaidJs.js"
