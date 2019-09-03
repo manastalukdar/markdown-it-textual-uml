@@ -2,6 +2,8 @@
 
 1. [markdown-it-textual-uml](#markdown-it-textual-uml)
    1. [Overview](#overview)
+      1. [Metadata](#metadata)
+      2. [Continuous Integration](#continuous-integration)
    2. [UML examples](#uml-examples)
       1. [PlantUML](#plantuml)
       2. [DOT](#dot)
@@ -25,6 +27,21 @@ At this point the following textual uml offerings are supported:
 | [DOT](https://graphviz.gitlab.io/_pages/doc/info/lang.html) | `dot`                     |
 | [ditaa](http://ditaa.sourceforge.net/)                      | `ditaa`                   |
 | [mermaid](https://github.com/knsv/mermaid)                  | `mermaid`                 |
+
+### Metadata
+
+| Provider     | Data                   | Status                                                                                                             |
+| ------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| npm          | Version                | ![npm](https://img.shields.io/npm/v/markdown-it-textual-uml)                                                       |
+| npm          | License                | ![NPM](https://img.shields.io/npm/l/markdown-it-textual-uml)                                                       |
+| npm          | Downloads              | ![npm](https://img.shields.io/npm/dw/markdown-it-textual-uml)                                                      |
+| BundlePhobia | Bundle size            | ![npm bundle size](https://img.shields.io/bundlephobia/min/markdown-it-textual-uml)                                |
+| GitHub       | Version (package.json) | ![GitHub package.json version](https://img.shields.io/github/package-json/v/manastalukdar/markdown-it-textual-uml) |
+
+### Continuous Integration
+
+| Platform | Provider | Operations | Status |
+| -------- | -------- | ---------- | ------ |
 
 ## UML examples
 
@@ -112,6 +129,25 @@ So you should have the following in your html page in order for the mermaid text
 ```
 
 Details [here](https://mermaidjs.github.io/#/usage?id=simple-usage-on-a-web-page).
+
+When using some sort of framework, be aware that `mermaid.initialize` would have to be called after the page has loaded. For example, with vue.js, this could look like:
+
+```javascript
+<script>
+let mermaid = null
+export default {
+    mounted() {
+        if (mermaid == null) {
+        mermaid = require('mermaid')
+        }
+        mermaid.initialize({
+        startOnLoad: true,
+        theme: 'forest'
+        })
+    }
+}
+</script>
+```
 
 ## References
 

@@ -10,6 +10,10 @@
     {
       "language": "markdown",
       "autoFix": true
+    },
+    {
+      "language": "json",
+      "autoFix": true
     }
   ],
   "eslint.autoFixOnSave": true,
