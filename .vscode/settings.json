@@ -17,11 +17,21 @@
     }
   ],
   "eslint.autoFixOnSave": true,
-  "editor.formatOnSave": false,
-  "eslint.workingDirectories": [{
+  "editor.formatOnSave": true,
+  "eslint.workingDirectories": [
+    {
+      "directory": "./",
+      "changeProcessCWD": true
+    },
+    {
     "directory": "./src",
     "changeProcessCWD": true
-  }],
+    },
+    {
+      "directory": "./test",
+      "changeProcessCWD": true
+    }
+  ],
   "markdown.extension.print.onFileSave": false,
   "markdown.extension.toc.orderedList": true,
   "javascript.validate.enable": true,

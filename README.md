@@ -12,8 +12,9 @@
    3. [Installation](#installation)
    4. [Usage](#usage)
       1. [Additional steps for mermaid](#additional-steps-for-mermaid)
-   5. [References](#references)
-   6. [License](#license)
+   5. [Development](#development)
+   6. [References](#references)
+   7. [License](#license)
 
 ## Overview
 
@@ -148,6 +149,10 @@ export default {
 }
 </script>
 ```
+
+## Development
+
+It is highly recommended to use [VS Code](https://code.visualstudio.com/).
 
 ## References
 
