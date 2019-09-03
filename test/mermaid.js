@@ -14,7 +14,8 @@ describe('markdown-it-textual-uml: mermaid', function() {
   });
 
   it('test logging', function () {
-    console.log(md().render(`\`\`\`mermaid
+    this.timeout(5000)
+    console.log(md().use(umlPlugin).render(`\`\`\`mermaid
     graph TD
         A[Christmas] -->|Get money| B(Go shopping)
         B --> C{Let me think}
@@ -24,8 +25,7 @@ describe('markdown-it-textual-uml: mermaid', function() {
     \`\`\``));
   });
 
-  /*
-  it('test default', function() {
+  /*it('test default', function() {
     var defaultParser = md().use(umlPlugin)
 
     function runGenerate() {
@@ -40,6 +40,5 @@ describe('markdown-it-textual-uml: mermaid', function() {
       })
     }
     runGenerate();
-  })
-  */
+  })*/
 })

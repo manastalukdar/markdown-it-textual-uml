@@ -41,10 +41,12 @@ const functions = {
      // overwrites existing file
      fs.writeFileSync(codeFile, code)
 
-     runScript(puppeteerScript, function (err) {
+     /*runScript(puppeteerScript, function (err) {
       if (err) throw err;
       console.log('finished running mermaid-puppeteer.js');
-    });
+    });*/
+
+    childProcess.execSync('node ' + puppeteerScript)
 
     const output = fs.readFileSync(outputFile, 'utf-8')
     return '<div class="mermaid" data-processed="true">\n' + output + '\n</div>\n'
