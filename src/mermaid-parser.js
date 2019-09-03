@@ -1,9 +1,12 @@
 'use strict'
 
-const puppeteer = require('puppeteer')
 const path = require('path')
+const fs = require('fs')
+const childProcess = require('child_process');
 
-// const mermaid = require('mermaid')
+const tempDir = path.join(__dirname, 'temp', 'mermaid')
+const outputFile = path.join(tempDir, 'output.data')
+const puppeteerScript = path.join(__dirname, './mermaid-puppeteer.js')
 
 const functions = {
   options: {},
@@ -21,55 +24,56 @@ const functions = {
     if (options) {
       this.options = options;
     }
-
-    // mermaid.initialize(Object.assign(this.mermaidParserDefaults, options))
+    if (!fs.existsSync(tempDir)){
+      fs.mkdirSync(tempDir);
+    }
+    const optionsFile = path.join(tempDir, 'options.data')
+    // overwrites existing file
+    fs.writeFileSync(optionsFile, JSON.stringify(this.options))
   },
 
-  async getMarkup(code) {
-    const browser = await puppeteer.launch()
-    const mermaidConfig = Object.assign(this.mermaidParserDefaults, this.options)
-    try {
-      const page = await browser.newPage()
-      const file = path.join(__dirname, 'index.html')
-      await page.goto(`file://${file}`)
-      const definition = code;
+  getMarkup(code) {
 
-      const element = (await page.$$('#container'))[1];
-      const divsCounts = await page.$$eval('#container', divs => divs.length);
-
-      await page.$eval('#container', (container, definition, mermaidConfig) => {
-        container.innerHTML = definition
-        window.mermaid.initialize(mermaidConfig)
-        window.mermaid.init(undefined, container)
-      }, definition, mermaidConfig)
-
-      const svg = await page.$eval('#container', container => container.innerHTML)
-
-      const resultSvg = svg
-
-      browser.close()
-      return resultSvg;
-    } catch ({
-      str,
-      hash
-    }) {
-      browser.close()
-      return `<pre>${str}</pre>`
+    const codeFile = path.join(tempDir, 'code.data')
+    if (!fs.existsSync(tempDir)){
+      fs.mkdirSync(tempDir);
     }
+     // overwrites existing file
+     fs.writeFileSync(codeFile, code)
 
-    /*try {
-      var needsUniqueId = 'render' + (Math.floor(Math.random() * 10000)).toString()
-      mermaid.mermaidAPI.render(needsUniqueId, code, sc => {
-        code = sc
-      })
-      return `<div class="mermaid">${code}</div>`
-    } catch ({
-      str,
-      hash
-    }) {
-      return `<pre>${str}</pre>`
-    }*/
+     runScript(puppeteerScript, function (err) {
+      if (err) throw err;
+      console.log('finished running mermaid-puppeteer.js');
+    });
+
+    const output = fs.readFileSync(outputFile, 'utf-8')
+    return '<div class="mermaid" data-processed="true">\n' + output + '\n</div>\n'
   }
+}
+
+// https://stackoverflow.com/a/22649812/420827
+function runScript(scriptPath, callback) {
+
+  // keep track of whether callback has been invoked to prevent multiple invocations
+  var invoked = false;
+
+  var process = childProcess.fork(scriptPath);
+
+  // listen for errors as they may prevent the exit event from firing
+  process.on('error', function (err) {
+      if (invoked) return;
+      invoked = true;
+      callback(err);
+  });
+
+  // execute the callback once the process has finished running
+  process.on('exit', function (code) {
+      if (invoked) return;
+      invoked = true;
+      var err = code === 0 ? null : new Error('exit code ' + code);
+      callback(err);
+  });
+
 }
 
 module.exports = {

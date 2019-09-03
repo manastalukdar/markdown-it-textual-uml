@@ -23,12 +23,10 @@ module.exports = function umlPlugin(md, options) {
 
     switch(langName) {
       case 'mermaid':
-        mermaidParser.functions.getMarkup(code)
-        .then(function(result) {
-          return result
-        }).catch((err) => {
-          console.log(err)
-        })
+        return mermaidParser.functions.getMarkup(code)
+        /*.then(function(result) {
+          return result;
+        })*/
         break;
       case 'plantuml':
       case 'dot':
