@@ -9,6 +9,7 @@
       4. [mermaid](#mermaid)
    3. [Installation](#installation)
    4. [Usage](#usage)
+      1. [Additional steps for mermaid](#additional-steps-for-mermaid)
    5. [References](#references)
    6. [License](#license)
 
@@ -98,6 +99,21 @@ import 'markdownItTextualUml from 'markdown-it-textual-uml'
 const md = require('markdown-it')()
            .use(markdownItTextualUml);
 ```
+
+### Additional steps for mermaid
+
+For mermaid, you have to include the `mermaid js` file in your application and initialize it **_after_** the window has loaded. Just using this plugin is not enough to ensure that the diagram is rendered correctly.
+
+**Note:** mermaid js has a dependency on the browser window being loaded before it can initialize. Related GitHub [issue](https://github.com/knsv/mermaid/issues/485).
+
+So you should have the following in your html page in order for the mermaid text definitions to be translated into svg.
+
+```html
+<script src="mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+```
+
+Details [here](https://mermaidjs.github.io/#/usage?id=simple-usage-on-a-web-page).
 
 ## References
 

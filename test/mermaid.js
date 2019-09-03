@@ -25,7 +25,7 @@ describe('markdown-it-textual-uml: mermaid', function() {
     \`\`\``));
   });
 
-  /*it('test default', function() {
+  it('test default', function() {
     var defaultParser = md().use(umlPlugin)
 
     function runGenerate() {
@@ -40,5 +40,5 @@ describe('markdown-it-textual-uml: mermaid', function() {
       })
     }
     runGenerate();
-  })*/
+  })
 })
