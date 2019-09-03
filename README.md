@@ -30,13 +30,13 @@ At this point the following textual uml offerings are supported:
 
 ### Metadata
 
-| Provider     | Data                   | Status                                                                                                             |
-| ------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| npm          | Version                | ![npm](https://img.shields.io/npm/v/markdown-it-textual-uml)                                                       |
-| npm          | License                | ![NPM](https://img.shields.io/npm/l/markdown-it-textual-uml)                                                       |
-| npm          | Downloads              | ![npm](https://img.shields.io/npm/dw/markdown-it-textual-uml)                                                      |
-| BundlePhobia | Bundle size            | ![npm bundle size](https://img.shields.io/bundlephobia/min/markdown-it-textual-uml)                                |
-| GitHub       | Version (package.json) | ![GitHub package.json version](https://img.shields.io/github/package-json/v/manastalukdar/markdown-it-textual-uml) |
+| Provider                                                     | Data                   | Status                                                                                                             |
+| ------------------------------------------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| [npm](https://www.npmjs.com/package/markdown-it-textual-uml) | Version                | ![npm](https://img.shields.io/npm/v/markdown-it-textual-uml)                                                       |
+| npm                                                          | License                | ![NPM](https://img.shields.io/npm/l/markdown-it-textual-uml)                                                       |
+| npm                                                          | Downloads              | ![npm](https://img.shields.io/npm/dw/markdown-it-textual-uml)                                                      |
+| BundlePhobia                                                 | Bundle size            | ![npm bundle size](https://img.shields.io/bundlephobia/min/markdown-it-textual-uml)                                |
+| GitHub                                                       | Version (package.json) | ![GitHub package.json version](https://img.shields.io/github/package-json/v/manastalukdar/markdown-it-textual-uml) |
 
 ### Continuous Integration
 
