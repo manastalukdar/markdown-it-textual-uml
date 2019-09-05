@@ -35,5 +35,6 @@
   "markdown.extension.print.onFileSave": false,
   "markdown.extension.toc.orderedList": true,
   "javascript.validate.enable": true,
-  "standard.enable": false
+  "standard.enable": false,
+  "markdown.extension.toc.levels": "2..6"
 }
