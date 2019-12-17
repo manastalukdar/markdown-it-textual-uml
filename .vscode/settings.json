@@ -36,5 +36,8 @@
   "markdown.extension.toc.orderedList": true,
   "javascript.validate.enable": true,
   "standard.enable": false,
-  "markdown.extension.toc.levels": "2..6"
+  "markdown.extension.toc.levels": "2..6",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
