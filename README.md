@@ -178,7 +178,12 @@ I have an open issue to make development, testing and deployments easier but for
 
 Once we have the changes tested out, revert back all changes in the test project.
 
-Now, in this project, run `npm publish`. Then tag the `develop` branch. Then merge develop to master. Then create a GitHub release at the tag.
+Now, in this project:
+
+1. Run `npm publish`.
+2. Merge develop to master.
+3. Create a GitHub release with the semantically versioned tag against master.
+4. Pull repo to local.
 
 ## References
 
