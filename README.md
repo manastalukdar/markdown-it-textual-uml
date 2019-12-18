@@ -163,6 +163,23 @@ export default {
 
 It is highly recommended to use [VS Code](https://code.visualstudio.com/).
 
+I have an open issue to make development, testing and deployments easier but for now following steps have to be followed:
+
+1. Make changes in this project.
+2. Update version in package.json.
+3. `npm run build`
+4. `npm run pack`
+5. In a separate test project that includes this npm package:
+   1. Change the entry in its package.json to: `"markdown-it-textual-uml": "file:./markdown-it-textual-uml-0.1.3.tgz"`. Change 0.1.3 to version from step 2.
+   2. Run `npm cache clean --force`.
+   3. Delete its package-lock.json.
+   4. Delete folder for `markdown-it-textual-uml` from within the node_modules folder.
+   5. Run `npm install`.
+
+Once we have the changes tested out, revert back all changes in the test project.
+
+Now, in this project, run `npm publish`. Then tag the `develop` branch. Then merge develop to master. Then create a GitHub release at the tag.
+
 ## References
 
 Here are some alternative npm packages:
