@@ -64,3 +64,5 @@ dist
 .reify-cache
 src/**/mermaid.min.js
 src/temp/
+
+.metals
