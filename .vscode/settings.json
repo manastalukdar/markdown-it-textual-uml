@@ -39,5 +39,8 @@
   "markdown.extension.toc.levels": "2..6",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
+  },
+  "files.watcherExclude": {
+    "**/target": true
   }
 }
