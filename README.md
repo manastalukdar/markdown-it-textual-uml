@@ -16,8 +16,8 @@
 ## Overview
 
 [![npm](https://img.shields.io/npm/v/markdown-it-textual-uml)](https://www.npmjs.com/package/markdown-it-textual-uml)
-![NPM](https://img.shields.io/npm/l/markdown-it-textual-uml) 
-![npm](https://img.shields.io/npm/dw/markdown-it-textual-uml)  
+![NPM](https://img.shields.io/npm/l/markdown-it-textual-uml)
+![npm](https://img.shields.io/npm/dw/markdown-it-textual-uml)
 [![GitHub Super-Linter](https://github.com/manastalukdar/markdown-it-textual-uml/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 [More project metadata badges [here](./documentation/project/metadata.md). More CI/CD badges [here](./documentation/development/ci-cd.md#current-status).]
