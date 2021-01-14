@@ -161,8 +161,8 @@ Once we have the changes tested out, revert back all changes in the test project
 Now, in this project:
 
 1. Run `npm publish`.
-2. Merge develop to master.
-3. Create a GitHub release with the semantically versioned tag against master.
+2. Merge develop to main.
+3. Create a GitHub release with the semantically versioned tag against main.
 4. Pull repo to local.
 
 ## References
@@ -175,4 +175,4 @@ Here are some alternative npm packages:
 
 ## License
 
-[MIT](https://github.com/manastalukdar/markdown-it-textual-uml/blob/master/LICENSE)
+[MIT](https://github.com/manastalukdar/markdown-it-textual-uml/blob/main/LICENSE)
