@@ -161,7 +161,7 @@ Once we have the changes tested out, revert back all changes in the test project
 Now, in this project:
 
 1. Run `npm publish`.
-2. Merge develop to main.
+2. Merge `develop` to `main`.
 3. Create a GitHub release with the semantically versioned tag against `main`.
 4. Pull repo to local.
 
