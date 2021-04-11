@@ -150,7 +150,7 @@ I have an open issue to make development, testing and deployments easier but for
 3. `npm run build`
 4. `npm run pack`
 5. In a separate test project that includes this npm package:
-   1. Change the entry in its package.json to: `"markdown-it-textual-uml": "file:./markdown-it-textual-uml-0.1.3.tgz"`. Change 0.1.3 to version from step 2.
+   1. Change the entry in its package.json to: `"markdown-it-textual-uml": "file:./markdown-it-textual-uml-0.1.3.tgz"`. Change version (last released version) to version from step 2.
    2. Run `npm cache clean --force`.
    3. Delete its package-lock.json.
    4. Delete folder for `markdown-it-textual-uml` from within the node_modules folder.
