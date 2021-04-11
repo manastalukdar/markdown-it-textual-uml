@@ -1,8 +1,6 @@
 # markdown-it-textual-uml
 
 1. [Overview](#overview)
-   1. [Metadata](#metadata)
-   2. [Continuous Integration](#continuous-integration)
 2. [UML examples](#uml-examples)
    1. [PlantUML](#plantuml)
    2. [DOT](#dot)
@@ -17,6 +15,13 @@
 
 ## Overview
 
+[![npm](https://img.shields.io/npm/v/markdown-it-textual-uml)](https://www.npmjs.com/package/markdown-it-textual-uml)
+![NPM](https://img.shields.io/npm/l/markdown-it-textual-uml)
+![npm](https://img.shields.io/npm/dw/markdown-it-textual-uml)
+[![GitHub Super-Linter](https://github.com/manastalukdar/markdown-it-textual-uml/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
+[More project metadata badges [here](./documentation/project/metadata.md). More CI/CD badges [here](./documentation/development/ci-cd.md#current-status).]
+
 This is a `markdown-it` markdown parser plugin to create uml diagrams from text, based on plantuml, mermaid, etc.
 
 At this point the following textual uml offerings are supported:
@@ -27,31 +32,6 @@ At this point the following textual uml offerings are supported:
 | [DOT](https://graphviz.gitlab.io/_pages/doc/info/lang.html) | `dot`                     |
 | [ditaa](http://ditaa.sourceforge.net/)                      | `ditaa`                   |
 | [mermaid](https://github.com/knsv/mermaid)                  | `mermaid`                 |
-
-### Metadata
-
-| Provider                                                               | Data                                | Status                                                                                                                 |
-| ---------------------------------------------------------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| [npm](https://www.npmjs.com/package/markdown-it-textual-uml)           | Version                             | ![npm](https://img.shields.io/npm/v/markdown-it-textual-uml)                                                           |
-| npm                                                                    | License                             | ![NPM](https://img.shields.io/npm/l/markdown-it-textual-uml)                                                           |
-| npm                                                                    | Downloads                           | ![npm](https://img.shields.io/npm/dw/markdown-it-textual-uml)                                                          |
-| BundlePhobia                                                           | Bundle size                         | ![npm bundle size](https://img.shields.io/bundlephobia/min/markdown-it-textual-uml)                                    |
-| GitHub                                                                 | Version (package.json)              | ![GitHub package.json version](https://img.shields.io/github/package-json/v/manastalukdar/markdown-it-textual-uml)     |
-| GitHub                                                                 | Repo Size                           | ![GitHub repo size](https://img.shields.io/github/repo-size/manastalukdar/markdown-it-textual-uml)                     |
-| GitHub                                                                 | Code Size                           | ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/manastalukdar/markdown-it-textual-uml)  |
-| GitHub                                                                 | Commit Activity                     | ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/manastalukdar/markdown-it-textual-uml)       |
-| GitHub                                                                 | Last Commit                         | ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/manastalukdar/markdown-it-textual-uml/master) |
-| GitHub                                                                 | Open Issues                         | ![GitHub issues](https://img.shields.io/github/issues-raw/manastalukdar/markdown-it-textual-uml)                       |
-| GitHub                                                                 | Closed Issues                       | ![GitHub issues](https://img.shields.io/github/issues-closed/manastalukdar/markdown-it-textual-uml)                    |
-| GitHub                                                                 | Language Count                      | ![GitHub language count](https://img.shields.io/github/languages/count/manastalukdar/markdown-it-textual-uml)          |
-| GitHub                                                                 | License                             | ![GitHub](https://img.shields.io/github/license/manastalukdar/markdown-it-textual-uml)                                 |
-| [david-dm](https://david-dm.org/manastalukdar/markdown-it-textual-uml) | Check node.js dependency status     | ![David (path)](https://img.shields.io/david/manastalukdar/markdown-it-textual-uml)                                    |
-| david-dm                                                               | Check node.js dev dependency status | ![David (path)](https://img.shields.io/david/manastalukdar/markdown-it-textual-uml?type=dev)                           |
-
-### Continuous Integration
-
-| Platform | Provider | Operations | Status |
-| -------- | -------- | ---------- | ------ |
 
 ## UML examples
 
@@ -84,9 +64,9 @@ digraph example1 {
 |Document|   |!magic!|    |       |
 |     {d}|   |       |    |       |
 +---+----+   +-------+    +-------+
-	:                         ^
-	|       Lots of work      |
-	+-------------------------+
+  :                         ^
+  |       Lots of work      |
+  +-------------------------+
 ```
 ````
 
@@ -170,7 +150,7 @@ I have an open issue to make development, testing and deployments easier but for
 3. `npm run build`
 4. `npm run pack`
 5. In a separate test project that includes this npm package:
-   1. Change the entry in its package.json to: `"markdown-it-textual-uml": "file:./markdown-it-textual-uml-0.1.3.tgz"`. Change 0.1.3 to version from step 2.
+   1. Change the entry in its package.json to: `"markdown-it-textual-uml": "file:./markdown-it-textual-uml-0.1.3.tgz"`. Change version (last released version) to version from step 2.
    2. Run `npm cache clean --force`.
    3. Delete its package-lock.json.
    4. Delete folder for `markdown-it-textual-uml` from within the node_modules folder.
@@ -178,7 +158,12 @@ I have an open issue to make development, testing and deployments easier but for
 
 Once we have the changes tested out, revert back all changes in the test project.
 
-Now, in this project, run `npm publish`. Then tag the `develop` branch. Then merge develop to master. Then create a GitHub release at the tag.
+Now, in this project:
+
+1. Run `npm publish`.
+2. Merge `develop` to `main`.
+3. Create a GitHub release with the semantically versioned tag against `main`.
+4. Pull repo to local.
 
 ## References
 
@@ -190,4 +175,4 @@ Here are some alternative npm packages:
 
 ## License
 
-[MIT](https://github.com/manastalukdar/markdown-it-textual-uml/blob/master/LICENSE)
+[MIT](https://github.com/manastalukdar/markdown-it-textual-uml/blob/main/LICENSE)

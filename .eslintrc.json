@@ -1,19 +1,21 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
-    "extends": ["google", "standard"],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "plugins": [],
-    "rules": {
-    }
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "google",
+    "standard"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "plugins": [],
+  "rules": {}
 }
