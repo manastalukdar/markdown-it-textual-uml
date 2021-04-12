@@ -160,10 +160,11 @@ Once we have the changes tested out, revert back all changes in the test project
 
 Now, in this project:
 
-1. Run `npm publish`.
-2. Merge `develop` to `main`.
+1. Run `npm run publish`.
+   1. <https://simplernerd.com/update-published-npm-package/>
+2. Merge `develop` to `main` using Github PR.
 3. Create a GitHub release with the semantically versioned tag against `main`.
-4. Pull repo to local.
+4. Pull repo to local (optional) if you have `main` branch locally.
 
 ## References
 
