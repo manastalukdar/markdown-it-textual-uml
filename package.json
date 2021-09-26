@@ -66,6 +66,7 @@
     "glob-parent": ">=6.0.0",
     "browserslist": ">=4.16.6",
     "set-value": ">=4.0.1",
-    "path-parse": ">=1.0.7"
+    "path-parse": ">=1.0.7",
+    "ansi-regex": ">=5.0.1"
   }
 }
