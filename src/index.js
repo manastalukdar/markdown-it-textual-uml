@@ -3,35 +3,39 @@
 const plantumlParser = require('./plantuml-parser.js')
 const mermaidParser = require('./mermaid-parser.js')
 
+/**
+ *
+ * @type {import('markdown-it').PluginWithOptions<Options>}
+ */
 module.exports = function umlPlugin(md, options) {
-  options = options || {};
+  options = options || {}
 
-  plantumlParser.functions.initialize(options);
-  mermaidParser.functions.initialize(options);
+  plantumlParser.functions.initialize(options)
+  mermaidParser.functions.initialize(options)
 
-  const defaultRenderer = md.renderer.rules.fence.bind(md.renderer.rules);
+  const defaultRenderer = md.renderer.rules.fence.bind(md.renderer.rules)
 
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
     const token = tokens[idx]
     const code = token.content.trim()
-    const info = token.info ? md.utils.decodeURIComponentAll(token.info).trim() : ''
+    const info = token.info ? md.utils.unescapeAll(token.info).trim() : ''
     let langName = ''
 
     if (info) {
       langName = info.split(/\s+/g)[0]
     }
 
-    switch(langName) {
+    switch (langName) {
       case 'mermaid':
         return mermaidParser.functions.getMarkup(code)
-        break;
+        break
       case 'plantuml':
       case 'dot':
         return plantumlParser.functions.getMarkup(code, 'uml')
-        break;
+        break
       case 'ditaa':
         return plantumlParser.functions.getMarkup(code, 'ditaa')
-        break;
+        break
     }
 
     return defaultRenderer(tokens, idx, options, env, slf)
