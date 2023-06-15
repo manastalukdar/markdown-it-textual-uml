@@ -23,7 +23,7 @@ const functions = {
     const deflate = require('./lib/deflate.js');
     const zippedCode = deflate.encode64(
       deflate.zip_deflate(
-        unescape(encodeURIComponent(
+        decodeURIComponent(encodeURIComponent(
           '@start' + diagramMarker + '\n' + umlCode + '\n@end' + diagramMarker)),
         ),
         9

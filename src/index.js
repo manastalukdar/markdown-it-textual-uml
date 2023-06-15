@@ -14,7 +14,7 @@ module.exports = function umlPlugin(md, options) {
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
     const token = tokens[idx]
     const code = token.content.trim()
-    const info = token.info ? md.utils.unescapeAll(token.info).trim() : ''
+    const info = token.info ? md.utils.decodeURIComponentAll(token.info).trim() : ''
     let langName = ''
 
     if (info) {
