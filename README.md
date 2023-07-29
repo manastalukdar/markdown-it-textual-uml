@@ -100,7 +100,7 @@ const md = require('markdown-it')()
 Or,
 
 ```javascript
-import 'markdownItTextualUml from 'markdown-it-textual-uml'
+import markdownItTextualUml from 'markdown-it-textual-uml'
 const md = require('markdown-it')()
            .use(markdownItTextualUml);
 ```
