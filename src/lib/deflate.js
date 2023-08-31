@@ -14,9 +14,9 @@
 'use strict'
 
 // Added to original:
-module.exports = {
+export default {
   zip_deflate,
-  encode64
+  encode64,
 }
 
 // Original[some parts modified to avoid errors]:
@@ -81,7 +81,7 @@ const zip_REPZ_3_10 = 17
 const zip_REPZ_11_138 = 18
 const zip_HEAP_SIZE = 2 * zip_L_CODES + 1
 const zip_H_SHIFT = parseInt(
-  (zip_HASH_BITS + zip_MIN_MATCH - 1) / zip_MIN_MATCH
+  (zip_HASH_BITS + zip_MIN_MATCH - 1) / zip_MIN_MATCH,
 )
 
 /* variables */
@@ -171,7 +171,7 @@ const zip_extra_lbits = new Array(
   5,
   5,
   5,
-  0
+  0,
 )
 const zip_extra_dbits = new Array(
   0,
@@ -203,7 +203,7 @@ const zip_extra_dbits = new Array(
   12,
   12,
   13,
-  13
+  13,
 )
 const zip_extra_blbits = new Array(
   0,
@@ -224,7 +224,7 @@ const zip_extra_blbits = new Array(
   0,
   2,
   3,
-  7
+  7,
 )
 const zip_bl_order = new Array(
   16,
@@ -245,7 +245,7 @@ const zip_bl_order = new Array(
   2,
   14,
   1,
-  15
+  15,
 )
 const zip_configuration_table = new Array(
   new zip_DeflateConfiguration(0, 0, 0, 0),
@@ -257,7 +257,7 @@ const zip_configuration_table = new Array(
   new zip_DeflateConfiguration(8, 16, 128, 128),
   new zip_DeflateConfiguration(8, 32, 128, 256),
   new zip_DeflateConfiguration(32, 128, 258, 1024),
-  new zip_DeflateConfiguration(32, 258, 258, 4096)
+  new zip_DeflateConfiguration(32, 258, 258, 4096),
 )
 
 /* objects (deflate) */
@@ -731,7 +731,7 @@ function zip_deflate_fast() {
 
       flush = zip_ct_tally(
         zip_strstart - zip_match_start,
-        zip_match_length - zip_MIN_MATCH
+        zip_match_length - zip_MIN_MATCH,
       )
       zip_lookahead -= zip_match_length
 
@@ -837,7 +837,7 @@ function zip_deflate_better() {
       //	    check_match(strstart - 1, prev_match, prev_length);
       flush = zip_ct_tally(
         zip_strstart - 1 - zip_prev_match,
-        zip_prev_length - zip_MIN_MATCH
+        zip_prev_length - zip_MIN_MATCH,
       )
 
       /* Insert in hash table all strings up to the end of the match.
@@ -1140,7 +1140,7 @@ function zip_init_block() {
  */
 function zip_pqdownheap(
   tree, // the tree to restore
-  k
+  k,
 ) {
   // node to move down
   const v = zip_heap[k]
@@ -1278,7 +1278,7 @@ function zip_gen_bitlen(desc) {
  */
 function zip_gen_codes(
   tree, // the tree to decorate
-  max_code
+  max_code,
 ) {
   // largest code with non zero frequency
   const next_code = new Array(zip_MAX_BITS + 1) // next code value for each bit length
@@ -1419,7 +1419,7 @@ function zip_build_tree(desc) {
  */
 function zip_scan_tree(
   tree, // the tree to be scanned
-  max_code
+  max_code,
 ) {
   // and its largest code of non zero frequency
   let n // iterates over all tree elements
@@ -1474,7 +1474,7 @@ function zip_scan_tree(
  */
 function zip_send_tree(
   tree, // the tree to be scanned
-  max_code
+  max_code,
 ) {
   // and its largest code of non zero frequency
   let n // iterates over all tree elements
@@ -1665,7 +1665,7 @@ function zip_flush_block(eof) {
     zip_send_all_trees(
       zip_l_desc.max_code + 1,
       zip_d_desc.max_code + 1,
-      max_blindex + 1
+      max_blindex + 1,
     )
     zip_compress_block(zip_dyn_ltree, zip_dyn_dtree)
   }
@@ -1683,7 +1683,7 @@ function zip_flush_block(eof) {
  */
 function zip_ct_tally(
   dist, // distance of matched string
-  lc
+  lc,
 ) {
   // match length-MIN_MATCH or unmatched char (if dist==0)
   zip_l_buf[zip_last_lit++] = lc
@@ -1746,7 +1746,7 @@ function zip_ct_tally(
  */
 function zip_compress_block(
   ltree, // literal tree
-  dtree
+  dtree,
 ) {
   // distance tree
   let dist // distance of matched string
@@ -1802,7 +1802,7 @@ function zip_compress_block(
 const zip_Buf_size = 16 // bit size of bi_buf
 function zip_send_bits(
   value, // value to send
-  length
+  length,
 ) {
   // number of bits
   /* If not enough room in bi_buf, use (valid) bits from bi_buf and
@@ -1827,7 +1827,7 @@ function zip_send_bits(
  */
 function zip_bi_reverse(
   code, // the value to invert
-  len
+  len,
 ) {
   // its bit length
   let res = 0
@@ -1903,7 +1903,7 @@ function encode64(data) {
       r += append3bytes(
         data.charCodeAt(i),
         data.charCodeAt(i + 1),
-        data.charCodeAt(i + 2)
+        data.charCodeAt(i + 2),
       )
     }
   }

@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-textual-uml",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Markdown-it markdown parser plugin to create uml diagrams from text, based on plantuml, mermaid, etc.",
   "main": "src/index.js",
   "type": "module",
