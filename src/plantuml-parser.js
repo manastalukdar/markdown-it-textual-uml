@@ -2,6 +2,8 @@
 //
 'use strict'
 
+import deflate from './lib/deflate.js'
+
 const functions = {
   options: {},
 
@@ -19,7 +21,6 @@ const functions = {
   generateSource(umlCode, diagramMarker, pluginOptions) {
     const imageFormat = pluginOptions.imageFormat || 'svg'
     const server = pluginOptions.server || 'https://www.plantuml.com/plantuml'
-    const deflate = require('./lib/deflate.js')
     const zippedCode = deflate.encode64(
       deflate.zip_deflate(
         unescape(
