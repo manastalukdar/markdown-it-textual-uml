@@ -1,15 +1,15 @@
 'use strict'
 
-const plantumlParser = require('./plantuml-parser.js')
-const mermaidParser = require('./mermaid-parser.js')
+import * as platumlFunctions from './plantuml-parser.js'
+import * as mermaidFunctions from './mermaid-parser.js'
 
-module.exports = function umlPlugin(md, options) {
-  options = options || {};
+export default function umlPlugin(md, options) {
+  options = options || {}
 
-  plantumlParser.functions.initialize(options);
-  mermaidParser.functions.initialize(options);
+  platumlFunctions.default.functions.initialize(options)
+  mermaidFunctions.default.functions.initialize(options)
 
-  const defaultRenderer = md.renderer.rules.fence.bind(md.renderer.rules);
+  const defaultRenderer = md.renderer.rules.fence.bind(md.renderer.rules)
 
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
     const token = tokens[idx]
@@ -21,17 +21,17 @@ module.exports = function umlPlugin(md, options) {
       langName = info.split(/\s+/g)[0]
     }
 
-    switch(langName) {
+    switch (langName) {
       case 'mermaid':
-        return mermaidParser.functions.getMarkup(code)
-        break;
+        return mermaidFunctions.default.functions.getMarkup(code)
+        break
       case 'plantuml':
       case 'dot':
-        return plantumlParser.functions.getMarkup(code, 'uml')
-        break;
+        return platumlFunctions.default.functions.getMarkup(code, 'uml')
+        break
       case 'ditaa':
-        return plantumlParser.functions.getMarkup(code, 'ditaa')
-        break;
+        return platumlFunctions.default.functions.getMarkup(code, 'ditaa')
+        break
     }
 
     return defaultRenderer(tokens, idx, options, env, slf)
