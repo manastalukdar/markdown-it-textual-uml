@@ -1,3 +1,3 @@
-require('./plantuml.js')
-require('./ditaa.js')
-require('./mermaid.js')
+import './plantuml.js'
+import './ditaa.js'
+import './mermaid.js'
