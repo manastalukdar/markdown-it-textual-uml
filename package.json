@@ -1,10 +1,11 @@
 {
   "name": "markdown-it-textual-uml",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Markdown-it markdown parser plugin to create uml diagrams from text, based on plantuml, mermaid, etc.",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
-    "test": "mocha --require reify test/tests.js",
+    "test": "mocha test test/tests.js",
     "publish": "npm publish --access public",
     "build": "babel src --out-dir dist --source-maps",
     "pack": "npm pack",
@@ -32,7 +33,7 @@
     "@babel/cli": "^7.22.10",
     "@babel/core": "^7.22.11",
     "@babel/node": "^7.22.10",
-    "@babel/preset-env": "^7.22.10",
+    "@babel/preset-env": "^7.22.14",
     "@babel/register": "^7.22.5",
     "babel-core": "^6.26.3",
     "babel-loader": "^9.1.3",
