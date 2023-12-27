@@ -173,6 +173,7 @@ Here are some alternative npm packages:
 - [GitHub - gmunguia/markdown-it-plantuml: plantuml diagrams in your markdown](https://github.com/gmunguia/markdown-it-plantuml)
 - [GitHub - tylingsoft/markdown-it-mermaid: Mermaid plugin for markdown-it](https://github.com/tylingsoft/markdown-it-mermaid)
 - [GitHub - liradb2000/markdown-it-mermaid: Mermaid plugin for markdown-it](https://github.com/liradb2000/markdown-it-mermaid)
+- [GitHub - https://github.com/DatatracCorporation/markdown-it-mermaid](https://github.com/DatatracCorporation/markdown-it-mermaid)
 
 ## License
 

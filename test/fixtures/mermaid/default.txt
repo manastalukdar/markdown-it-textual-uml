@@ -8,12 +8,12 @@ graph TD;
     C-->D;
 ```
 .
-<div class="mermaid">
+<pre class="mermaid">
 graph TD;
     A-->B;
     A-->C;
     B-->D;
     C-->D;
-</div>
+</pre>
 .
 
