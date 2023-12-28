@@ -74,8 +74,6 @@
   },
   "dependencies": {
     "@mermaid-js/mermaid-cli": "^10.6.1",
-    "deasync": "^0.1.29",
-    "jsdom": "^23.0.1",
     "mermaid": "^10.6.1"
   }
 }
