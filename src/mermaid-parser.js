@@ -18,6 +18,7 @@ const functions = {
   },
 
   getMarkup(code) {
+    code = removeTripleBackticks(code)
     return `<div class="mermaid">\n${code}\n</div>\n`
   },
 }
@@ -104,4 +105,5 @@ async function getSvgWrapper(code) {
 export default {
   functions,
   getSvgAsync,
+  getSvgWrapper,
 }

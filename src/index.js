@@ -11,7 +11,7 @@ export default function umlPlugin(md, options) {
 
   const defaultRenderer = md.renderer.rules.fence.bind(md.renderer.rules)
 
-  md.renderer.rules.fence = async (tokens, idx, options, env, slf) => {
+  md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
     const token = tokens[idx]
     const code = token.content.trim()
     const info = token.info ? md.utils.unescapeAll(token.info).trim() : ''
@@ -23,8 +23,7 @@ export default function umlPlugin(md, options) {
 
     switch (langName) {
       case 'mermaid':
-        //const result = await mermaidFunctions.default.getSvgWrapper(code)
-        //return result
+        //return mermaidFunctions.default.getSvgWrapper(code)
         return mermaidFunctions.default.functions.getMarkup(code)
         break
       case 'plantuml':
