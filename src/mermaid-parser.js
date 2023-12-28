@@ -2,6 +2,30 @@
 
 import Mermaid from 'mermaid'
 import Murmur from './murmurhash3_gc.js'
+import jsdom from 'jsdom'
+
+const { JSDOM } = jsdom
+const dom = new JSDOM('<!doctype html><html><body></body></html>')
+const document = dom.window.document
+
+const setEnv = () =>
+  new Promise((resolve, reject) => {
+    jsdom.env({
+      html: '',
+      features: {
+        QuerySelector: true,
+      },
+      done: (errors, window) => {
+        if (errors) {
+          reject(errors)
+        } else {
+          global.window = window
+          global.document = window.document
+          resolve()
+        }
+      },
+    })
+  })
 
 const functions = {
   options: {},
@@ -51,9 +75,14 @@ function removeTripleBackticks(inputString) {
 
 async function awaitRender(code) {
   code = removeTripleBackticks(code)
+  const mermaidGraph = `<div class="mermaid">\n${code}\n</div>`
   var needsUniqueId = 'render' + Murmur(code, 42).toString()
-  const { svgCode } = await Mermaid.mermaidAPI.render(needsUniqueId, code)
-  return `<div>\n${svgCode}\n</div>`
+  setEnv().then(async () => {
+    const { svgCode } = await Mermaid.mermaidAPI.render(needsUniqueId, code)
+    mermaidGraph.innerHTML = svgCode
+    console.log(svgCode)
+    return mermaidGraph //`<div>\n${svgCode}\n</div>`
+  })
 }
 
 const MermaidChart = (code) => {

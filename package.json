@@ -73,6 +73,8 @@
     "y18n": "^=5.0.8"
   },
   "dependencies": {
+    "@mermaid-js/mermaid-cli": "^10.6.1",
+    "jsdom": "^23.0.1",
     "mermaid": "^10.6.1"
   }
 }
