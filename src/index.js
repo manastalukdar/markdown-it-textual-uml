@@ -23,8 +23,8 @@ export default function umlPlugin(md, options) {
 
     switch (langName) {
       case 'mermaid':
-        //console.log('DUMMY: ' + code)
-        return mermaidFunctions.default.MermaidChart(code)
+        const result = mermaidFunctions.default.getSvgSync(code)
+        return result
         break
       case 'plantuml':
       case 'dot':

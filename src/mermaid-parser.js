@@ -2,30 +2,13 @@
 
 import Mermaid from 'mermaid'
 import Murmur from './murmurhash3_gc.js'
-import jsdom from 'jsdom'
-
-const { JSDOM } = jsdom
-const dom = new JSDOM('<!doctype html><html><body></body></html>')
-const document = dom.window.document
-
-const setEnv = () =>
-  new Promise((resolve, reject) => {
-    jsdom.env({
-      html: '',
-      features: {
-        QuerySelector: true,
-      },
-      done: (errors, window) => {
-        if (errors) {
-          reject(errors)
-        } else {
-          global.window = window
-          global.document = window.document
-          resolve()
-        }
-      },
-    })
-  })
+import fs from 'fs'
+import { run } from '@mermaid-js/mermaid-cli'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import deasync from 'deasync'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const fsPromises = fs.promises
 
 const functions = {
   options: {},
@@ -73,27 +56,82 @@ function removeTripleBackticks(inputString) {
   }
 }
 
+function writeToFile(contents, file) {
+  fs.writeFile(file, contents, (err) => {
+    if (err) {
+      console.error(err)
+    }
+    console.log(file)
+    console.log('File written successfully!')
+  })
+}
+
+async function readFromFile(file) {
+  try {
+    const data = await fsPromises.readFile(file, 'utf8')
+    return data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+async function getSvg(code) {
+  const dirPath = path.join(__dirname, '/temp/mermaid-parser')
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true })
+  }
+  code = removeTripleBackticks(code)
+  const inputFile = path.join(dirPath, 'mermaid.mmd')
+  const outputFile = path.join(dirPath, 'output.svg')
+  writeToFile(code, inputFile)
+  await run(
+    inputFile,
+    outputFile, // {optional options},
+  )
+  await sleep(5000)
+  const fileData = await readFromFile(outputFile)
+  if (fs.existsSync(dirPath)) {
+    fs.rm(dirPath, { recursive: true, force: true }, (err) => {
+      if (err) {
+        // File deletion failed
+        console.error(err.message)
+        return
+      }
+      console.log('Files deleted successfully')
+    })
+  }
+  return fileData //`<div>\n${svgCode}\n</div>`
+}
+
+function getSvgSync(code) {
+  let result
+  getSvg(code).then((r) => {
+    result = r
+  })
+  while (result === undefined) {
+    console.log('here')
+  }
+  //console.log(result)
+  return result
+}
+
 async function awaitRender(code) {
   code = removeTripleBackticks(code)
   const mermaidGraph = `<div class="mermaid">\n${code}\n</div>`
   var needsUniqueId = 'render' + Murmur(code, 42).toString()
-  setEnv().then(async () => {
-    const { svgCode } = await Mermaid.mermaidAPI.render(needsUniqueId, code)
-    mermaidGraph.innerHTML = svgCode
-    console.log(svgCode)
-    return mermaidGraph //`<div>\n${svgCode}\n</div>`
-  })
+  const { svgCode } = await Mermaid.mermaidAPI.render(needsUniqueId, code)
+  mermaidGraph.innerHTML = svgCode
+  //console.log(svgCode)
+  return mermaidGraph //`<div>\n${svgCode}\n</div>`
 }
 
 const MermaidChart = (code) => {
   try {
     awaitRender(code)
-    /*.then(function (result) {
-      return result
-    })*/
-    //const type = Mermaid.detectType(code)
-    //console.log(type)
-    //console.log('svgCode: ' + svgCode)
     //return `<pre class="mermaid">${code}</pre>`
   } catch (err) {
     return `<pre>${htmlEntities(err.name)}: ${htmlEntities(err.message)}</pre>`
@@ -104,5 +142,6 @@ export default {
   functions,
   MermaidChart,
   MermaidPlugIn,
-  awaitRender,
+  getSvg,
+  getSvgSync,
 }

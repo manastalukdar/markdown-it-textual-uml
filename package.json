@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha test test/tests.js",
+    "test": "mocha test test/tests.js --timeout 10000",
     "publish": "npm publish --access public",
     "build": "babel src --out-dir dist --source-maps",
     "pack": "npm pack",
@@ -74,6 +74,7 @@
   },
   "dependencies": {
     "@mermaid-js/mermaid-cli": "^10.6.1",
+    "deasync": "^0.1.29",
     "jsdom": "^23.0.1",
     "mermaid": "^10.6.1"
   }

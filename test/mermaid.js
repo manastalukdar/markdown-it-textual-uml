@@ -21,14 +21,14 @@ describe('markdown-it-textual-uml: mermaid', function () {
   })
 
   it('test mermaid direct', async function () {
-    mermaidParser.default.functions.initialize()
-    const svg = await mermaidParser.default.awaitRender(`
+    const svg = await mermaidParser.default.getSvg(`
     graph TD
         A[Christmas] -->|Get money| B(Go shopping)
         B --> C{Let me think}
         C -->|One| D[Laptop]
         C -->|Two| E[iPhone]
         C -->|Three| F[Car]`)
+    console.log('svg length: ' + svg.length)
   })
 
   it('test logging', function () {
