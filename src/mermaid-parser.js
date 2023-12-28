@@ -1,7 +1,5 @@
 'use strict'
 
-import Mermaid from 'mermaid'
-import Murmur from './murmurhash3_gc.js'
 import fs from 'fs'
 import { run } from '@mermaid-js/mermaid-cli'
 import path from 'path'
@@ -16,35 +14,13 @@ const functions = {
   initialize(options) {
     if (options) {
       this.options = options
-      Object.assign(MermaidPlugIn.default, options)
     }
-    MermaidPlugIn()
   },
 
   getMarkup(code) {
     return `<div class="mermaid">\n${code}\n</div>\n`
   },
 }
-
-const MermaidPlugIn = () => {
-  Mermaid.initialize(MermaidPlugIn.default)
-}
-
-MermaidPlugIn.default = {
-  startOnLoad: false,
-  securityLevel: 'true',
-  theme: 'default',
-  flowchart: {
-    htmlLabels: false,
-    useMaxWidth: true,
-  },
-  dictionary: {
-    token: 'mermaid',
-  },
-}
-
-const htmlEntities = (str) =>
-  String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
 function removeTripleBackticks(inputString) {
   if (inputString.endsWith('```')) {
@@ -114,7 +90,7 @@ async function getSvgAsync(code) {
     inputFile,
     outputFile, // {optional options},
   )
-  await sleep(5000)
+  await sleep(1000)
   const svgCode = await readFromFile(outputFile)
   deleteFilesAndDir(dirPath)
   return `<div>\n${svgCode}\n</div>`
@@ -125,29 +101,7 @@ async function getSvgWrapper(code) {
   return result
 }
 
-async function renderAsync(code) {
-  code = removeTripleBackticks(code)
-  const mermaidGraph = `<div class="mermaid">\n${code}\n</div>`
-  var needsUniqueId = 'render' + Murmur(code, 42).toString()
-  const { svgCode } = await Mermaid.mermaidAPI.render(needsUniqueId, code)
-  mermaidGraph.innerHTML = svgCode
-  //console.log(svgCode)
-  return mermaidGraph //`<div>\n${svgCode}\n</div>`
-}
-
-const MermaidChart = (code) => {
-  try {
-    renderAsync(code)
-    //return `<pre class="mermaid">${code}</pre>`
-  } catch (err) {
-    return `<pre>${htmlEntities(err.name)}: ${htmlEntities(err.message)}</pre>`
-  }
-}
-
 export default {
   functions,
-  //MermaidChart,
-  //MermaidPlugIn,
   getSvgAsync,
-  //getSvgWrapper,
 }
