@@ -6,6 +6,7 @@ import fs from 'fs'
 import { run } from '@mermaid-js/mermaid-cli'
 import path from 'path'
 import { fileURLToPath } from 'url'
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const fsPromises = fs.promises
 
@@ -15,9 +16,9 @@ const functions = {
   initialize(options) {
     if (options) {
       this.options = options
-      //Object.assign(MermaidPlugIn.default, options)
+      Object.assign(MermaidPlugIn.default, options)
     }
-    //MermaidPlugIn()
+    MermaidPlugIn()
   },
 
   getMarkup(code) {
@@ -98,7 +99,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-async function getSvg(code) {
+async function getSvgAsync(code) {
   const dirPath = path.join(__dirname, '/temp/mermaid-parser')
   if (!fs.existsSync(dirPath)) {
     fs.mkdirSync(dirPath, {
@@ -114,17 +115,17 @@ async function getSvg(code) {
     outputFile, // {optional options},
   )
   await sleep(5000)
-  const fileData = await readFromFile(outputFile)
+  const svgCode = await readFromFile(outputFile)
   deleteFilesAndDir(dirPath)
-  return fileData //`<div>\n${svgCode}\n</div>`
+  return `<div>\n${svgCode}\n</div>`
 }
 
 async function getSvgWrapper(code) {
-  const result = await getSvg(code)
+  const result = await getSvgAsync(code)
   return result
 }
 
-async function awaitRender(code) {
+async function renderAsync(code) {
   code = removeTripleBackticks(code)
   const mermaidGraph = `<div class="mermaid">\n${code}\n</div>`
   var needsUniqueId = 'render' + Murmur(code, 42).toString()
@@ -136,7 +137,7 @@ async function awaitRender(code) {
 
 const MermaidChart = (code) => {
   try {
-    awaitRender(code)
+    renderAsync(code)
     //return `<pre class="mermaid">${code}</pre>`
   } catch (err) {
     return `<pre>${htmlEntities(err.name)}: ${htmlEntities(err.message)}</pre>`
@@ -147,6 +148,6 @@ export default {
   functions,
   //MermaidChart,
   //MermaidPlugIn,
-  getSvg,
+  getSvgAsync,
   //getSvgWrapper,
 }

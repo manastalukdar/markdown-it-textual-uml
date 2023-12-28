@@ -21,7 +21,7 @@ describe('markdown-it-textual-uml: mermaid', function () {
   })
 
   it('test mermaid direct', async function () {
-    const svg = await mermaidParser.default.getSvg(`
+    const svg = await mermaidParser.default.getSvgAsync(`
     graph TD
         A[Christmas] -->|Get money| B(Go shopping)
         B --> C{Let me think}
