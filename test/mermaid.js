@@ -45,6 +45,19 @@ describe('markdown-it-textual-uml: mermaid', function () {
     )
   })
 
+  it('test logging 2', function () {
+    this.timeout(5000)
+    const result = md().use(umlPlugin).render(`\`\`\`mermaid
+    graph TD
+        A[Christmas] -->|Get money| B(Go shopping)
+        B --> C{Let me think}
+        C -->|One| D[Laptop]
+        C -->|Two| E[iPhone]
+        C -->|Three| F[Car]
+    \`\`\``)
+    console.log(result)
+  })
+
   it('test default', function () {
     var defaultParser = md().use(umlPlugin)
 
