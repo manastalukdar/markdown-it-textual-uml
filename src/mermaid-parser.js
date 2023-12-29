@@ -97,13 +97,7 @@ async function getSvgAsync(code) {
   return `<div>\n${svgCode}\n</div>`
 }
 
-async function getSvgWrapper(code) {
-  const result = await getSvgAsync(code)
-  return result
-}
-
 export default {
   functions,
   getSvgAsync,
-  getSvgWrapper,
 }
