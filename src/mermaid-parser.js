@@ -11,7 +11,7 @@ const functions = {
 
   getMarkup(code) {
     let content = removeTripleBackticks(code)
-    return `<pre><div class="mermaid">\n${content}\n</div></pre>\n`
+    return `<pre class="mermaid">\n${content}\n</pre>\n`
   },
 }
 
