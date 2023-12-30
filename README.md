@@ -118,23 +118,15 @@ So you should have the following in your html page in order for the mermaid text
 <script>mermaid.initialize({startOnLoad:true});</script>
 ```
 
-Details [here](https://mermaidjs.github.io/#/usage?id=simple-usage-on-a-web-page).
+Details [here](https://mermaid.js.org/config/usage.html).
 
-When using some sort of framework, be aware that `mermaid.initialize` would have to be called after the page has loaded. For example, with vue.js, this could look like:
+When using some sort of framework, be aware that `mermaid.initialize` would have to be called after the page has loaded. For example, with vue.js or nuxt.js, this could look like:
 
 ```javascript
-<script>
-let mermaid = null
-export default {
-    mounted() {
-        if (mermaid == null) {
-        mermaid = require('mermaid')
-        }
-        mermaid.initialize({
-        startOnLoad: true,
-        theme: 'forest'
-        })
-    }
+<script setup>
+import mermaid from 'mermaid'
+mermaid.initialize({ startOnLoad: false });
+await mermaid.run()
 }
 </script>
 ```
@@ -173,6 +165,7 @@ Here are some alternative npm packages:
 - [GitHub - gmunguia/markdown-it-plantuml: plantuml diagrams in your markdown](https://github.com/gmunguia/markdown-it-plantuml)
 - [GitHub - tylingsoft/markdown-it-mermaid: Mermaid plugin for markdown-it](https://github.com/tylingsoft/markdown-it-mermaid)
 - [GitHub - liradb2000/markdown-it-mermaid: Mermaid plugin for markdown-it](https://github.com/liradb2000/markdown-it-mermaid)
+- [GitHub - https://github.com/DatatracCorporation/markdown-it-mermaid](https://github.com/DatatracCorporation/markdown-it-mermaid)
 
 ## License
 
